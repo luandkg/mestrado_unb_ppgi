@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -O2
 
 # Diretórios
-SRC_DIR = src
+SRC_DIR = algoritmos
 OBJ_DIR = build/objects
 OUT_DIR = build/out
 
