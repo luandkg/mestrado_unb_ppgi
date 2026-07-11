@@ -7,28 +7,29 @@ SRC_DIR = src
 OBJ_DIR = build/objects
 OUT_DIR = build/out
 
-# Arquivos fonte
-SOURCES = $(SRC_DIR)/bully.c
-OBJECTS = $(OBJ_DIR)/bully.o
+# Lista de fontes (declare aqui apenas os nomes .c)
+SRC_FILES = bully.c chang_roberts.c
 
-# Nome do executável
-TARGET = $(OUT_DIR)/bully
+# Geração automática de caminhos
+SOURCES = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
+OBJECTS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+TARGETS = $(patsubst %.c,$(OUT_DIR)/%,$(SRC_FILES))
 
 # Regra principal
-all: $(TARGET)
+all: $(TARGETS)
 
-# Linkagem
-$(TARGET): $(OBJECTS)
+# Linkagem genérica: cada executável depende do objeto correspondente
+$(OUT_DIR)/%: $(OBJ_DIR)/%.o
 	@mkdir -p $(OUT_DIR)
 	$(CC) $(CFLAGS) -o $@ $^
 
-# Compilação do objeto
+# Compilação genérica dos objetos
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Limpeza
 clean:
-	rm -rf $(OBJ_DIR)/*.o $(TARGET)
+	rm -rf $(OBJ_DIR)/*.o $(TARGETS)
 
 .PHONY: all clean

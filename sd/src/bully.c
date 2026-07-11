@@ -17,11 +17,11 @@ int bullyElection(int iniciador) {
 }
 
 int main() {
-    printf("=== Bully Algorithm ===\n");
+    printf("------------------------------ Bully Algorithm ------------------------------\n");
     ativo[4] = 0; 
     int iniciador = 2; 
     int lider = bullyElection(processos[iniciador]);
-    printf("Processo %d iniciou eleição.\n", processos[iniciador]);
-    printf("Novo líder eleito: %d\n", lider);
+    printf("\t >> Processo %d iniciou eleição.\n", processos[iniciador]);
+    printf("\t >> Novo líder eleito: %d\n", lider);
     return 0;
 }
