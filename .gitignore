@@ -1,0 +1,5 @@
+# Ignorar todas as pastas build em qualquer nível
+**/build/
+*.o
+*.out
+*.exe
