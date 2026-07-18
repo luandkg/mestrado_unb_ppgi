@@ -1,4 +1,5 @@
 # Ignorar todas as pastas build em qualquer nível
+/build/
 **/build/
 *.o
 *.out
