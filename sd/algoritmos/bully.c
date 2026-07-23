@@ -25,3 +25,32 @@ int main() {
     printf("\t >> Novo líder eleito: %d\n", lider);
     return 0;
 }
+
+/*
+ * Bully Algorithm (Algoritmo Valentão)
+ *
+ * O Bully Algorithm é um método de eleição de coordenador em sistemas distribuídos.
+ * Cada processo possui um identificador único (ID). Quando o coordenador atual falha,
+ * um processo inicia uma eleição enviando mensagens para todos os processos com ID maior.
+ *
+ * Regras principais:
+ * 1. Se nenhum processo com ID maior responder, o iniciador se declara coordenador.
+ * 2. Se algum processo com ID maior responder, esse processo assume a eleição.
+ * 3. O vencedor (processo com maior ID ativo) anuncia sua vitória para todos.
+ * 4. Caso um processo com ID maior retorne ao sistema, ele pode iniciar nova eleição
+ *    e "derrubar" o coordenador atual.
+ *
+ * Vantagens:
+ * - Simples de implementar.
+ * - Garante sempre um coordenador único.
+ *
+ * Desvantagens:
+ * - Pode gerar muitas mensagens em sistemas grandes.
+ * - Não considera desempenho ou carga, apenas o maior ID.
+ *
+ * Aplicações:
+ * - Bancos de dados distribuídos.
+ * - Sistemas de clusters.
+ * - Redes peer-to-peer.
+ */
+
