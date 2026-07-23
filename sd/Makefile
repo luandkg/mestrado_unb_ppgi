@@ -8,7 +8,7 @@ OBJ_DIR = build/objects
 OUT_DIR = build/out
 
 # Lista de fontes (declare aqui apenas os nomes .c)
-SRC_FILES = bully.c chang_roberts.c ricart_agrawala.c
+SRC_FILES = bully.c chang_roberts.c ricart_agrawala.c maekawa.c
 
 # Geração automática de caminhos
 SOURCES = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
