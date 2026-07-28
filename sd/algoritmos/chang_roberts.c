@@ -34,6 +34,7 @@ int main() {
 ------------------------------------------------------------
 📌 Implementação do Algoritmo de Eleição Chang & Roberts
 ------------------------------------------------------------
+
 Descrição:
     Este programa implementa o algoritmo circular de eleição
     de líder proposto por Chang & Roberts, utilizado em sistemas
