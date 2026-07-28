@@ -70,3 +70,52 @@ int main() {
     pthread_mutex_destroy(&lock);
     return 0;
 }
+
+/*
+------------------------------------------------------------
+📌 Implementação do Algoritmo de Exclusão Mútua Ricart–Agrawala
+------------------------------------------------------------
+Descrição:
+    Este programa implementa o algoritmo distribuído de exclusão
+    mútua Ricart–Agrawala, baseado em troca de mensagens de
+    requisição e resposta entre processos em uma rede.
+
+Objetivo:
+    Garantir acesso exclusivo à seção crítica (Critical Section - CS)
+    sem necessidade de servidor central, utilizando comunicação
+    direta entre processos.
+
+Funcionamento do Algoritmo:
+    - Cada processo possui um identificador único (ID) e um relógio
+      lógico (timestamp).
+    - Quando um processo deseja entrar na seção crítica:
+        • Ele envia uma mensagem de requisição (REQ) para todos os
+          outros processos, contendo seu ID e timestamp.
+    - Ao receber uma requisição:
+        • Se o processo receptor não deseja entrar na CS ou seu
+          timestamp é maior, ele responde imediatamente com uma
+          mensagem de resposta (REPLY).
+        • Caso contrário, ele adia a resposta até sair da CS.
+    - Um processo só pode entrar na seção crítica após receber REPLY
+      de todos os outros processos.
+    - Ao sair da CS, o processo envia as respostas pendentes que
+      havia adiado, permitindo que outros prossigam.
+
+Critérios de Aceitação:
+    ✅ Um processo só entra na seção crítica após receber todas
+       as respostas dos demais.
+    ✅ O algoritmo assegura ausência de deadlocks.
+    ✅ O acesso à CS é justo, respeitando a ordem dos timestamps.
+    ✅ Todos os processos reconhecem quando outro está na CS e
+       respeitam a exclusão mútua.
+
+Referências:
+    - Ricart–Agrawala Algorithm - Wikipedia
+    - Ricart, G., & Agrawala, A. K. (1981).
+      "An Optimal Algorithm for Mutual Exclusion in Computer Networks."
+      Communications of the ACM, 24(1), 9–17.
+    - Tanenbaum, A. S., & Van Steen, M. (2007).
+      "Distributed Systems: Principles and Paradigms."
+      Pearson Education.
+------------------------------------------------------------
+*/
